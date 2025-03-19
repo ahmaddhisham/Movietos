@@ -1,0 +1,37 @@
+.about-container {
+    min-height: 100vh;
+    background-color: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .highlight {
+    color: #f5c518;
+    font-weight: bold;
+  }
+  
+  .bold-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
