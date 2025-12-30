@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="MovieApp logo">
+  <rect width="120" height="120" rx="20" fill="#111827" />
+  <circle cx="36" cy="36" r="20" fill="#60A5FA" />
+  <path d="M70 38c0-6-5-11-11-11h-6v46h6c6 0 11-5 11-11V38z" fill="#FBBF24" />
+  <text x="62" y="86" font-family="Inter, Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="end">Movietos</text>
+</svg>
