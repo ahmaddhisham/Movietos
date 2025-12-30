@@ -6,7 +6,7 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
   searchMovies,
-} from "../services/api";
+} from "../services/Api.js";
 
 function Home() {
   const [popular, setPopular] = useState([]);
