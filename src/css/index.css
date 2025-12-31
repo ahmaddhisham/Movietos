@@ -30,3 +30,24 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Footer specific animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  animation: fadeInUp 0.5s ease-out;
+}
+
