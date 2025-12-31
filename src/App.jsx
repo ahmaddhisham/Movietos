@@ -1,5 +1,4 @@
 import "./css/index.css"
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import { MovieProvider } from "./contexts/MovieContext"
@@ -7,6 +6,8 @@ import Favorites from './pages/Favorites'
 import NavBar from './components/NavBar'
 import About from "./pages/About"
 import Footer from "./components/Footer"
+import Genres from "./pages/Genres"
+import MovieDetails from "./pages/MovieDetails"
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/favorites' element={<Favorites />} />
             <Route path="/about" element={<About/>} />
+            <Route path="/genres" element={<Genres/>}/>
+            <Route path="/movie/:id" element={<MovieDetails />} /> {/* Add this line */}
           </Routes>
         </main>
         <Footer />

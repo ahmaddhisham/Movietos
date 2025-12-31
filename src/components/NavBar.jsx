@@ -50,7 +50,7 @@ function NavBar() {
             <li>
               <Link
                 to="/"
-                className="block rounded px-3 py-2 text-blue-500 md:p-0"
+                className="block rounded px-3 py-2 text-gray-300 md:p-0"
               >
                 Home
               </Link>
@@ -69,6 +69,14 @@ function NavBar() {
                 className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
               >
                 About
+              </Link>
+            </li> 
+            <li>
+              <Link
+                to="/genres"
+                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
+              >
+                Genres
               </Link>
             </li> 
           </ul>

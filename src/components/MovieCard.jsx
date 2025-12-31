@@ -1,4 +1,5 @@
 import { useCallback, memo, useState } from "react";
+import { Link } from "react-router-dom";
 import { useMovieContext } from "../contexts/MovieContext";
 import PropTypes from "prop-types";
 
@@ -66,6 +67,8 @@ function MovieCard({ movie }) {
   const releaseYear = movie.release_date?.split("-")[0] || "N/A";
 
   return (
+        <Link to={`/movie/${movie.id}`} className="block"> {/* Add this line */}
+
     <article 
       className="relative overflow-hidden rounded-xl bg-gray-800 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus-within:scale-[1.02] focus-within:shadow-xl"
       aria-label={`Movie: ${movie.title}, ${releaseYear}`}
@@ -201,6 +204,7 @@ function MovieCard({ movie }) {
         </div>
       )}
     </article>
+    </Link>
   );
 }
 
