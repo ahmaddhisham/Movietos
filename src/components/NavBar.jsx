@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
@@ -7,13 +8,16 @@ function NavBar() {
     <nav className="fixed top-0 z-20 w-full border-b border-gray-800 bg-gray-900">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-4">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3">
-          <img
-            src="/movietos-logo.png"
-            className="h-7"
-            alt="Logo"
-          />
-        </a>
+        <Link to="/" className="flex items-center gap-3 group" aria-label="Go to homepage">
+          <div className="rounded-full p-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+            <img
+              src="/movietos-logo.png"
+              className="h-9 w-9 rounded-full bg-gray-900 object-cover transition-transform duration-200 transform group-hover:scale-105"
+              alt="Movietos logo"
+            />
+          </div>
+          <span className="hidden md:inline-block ml-2 font-semibold text-white">Movietos</span>
+        </Link>
 
         {/* Mobile menu button */}
         <button
@@ -44,29 +48,29 @@ function NavBar() {
         >
           <ul className="mt-4 flex flex-col rounded-lg border border-gray-800 bg-gray-800 p-4 md:mt-0 md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0">
             <li>
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="block rounded px-3 py-2 text-blue-500 md:p-0"
               >
                 Home
-              </a>
-            </li>
+              </Link>
+            </li> 
             <li>
-              <a
-                href="favorites"
+              <Link
+                to="/favorites"
                 className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
               >
                 Favorites
-              </a>
-            </li>
+              </Link>
+            </li> 
             <li>
-              <a
-                href="#"
+              <Link
+                to="/about"
                 className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
               >
                 About
-              </a>
-            </li>
+              </Link>
+            </li> 
           </ul>
         </div>
       </div>

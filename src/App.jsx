@@ -11,7 +11,7 @@ import Footer from "./components/Footer"
 function App() {
   return (
     <MovieProvider>
-      <div className="flex flex-col min-h-screen bg-gray-900"> {/* Add this wrapper */}
+      <div className="flex flex-col min-h-screen pt-24 bg-gray-900"> {/* Add this wrapper */}
         <NavBar />
         <main className='flex-grow'> {/* Change from 'main-content' to 'flex-grow' */}
           <Routes>
