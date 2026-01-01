@@ -52,20 +52,14 @@ export const getGenres = async () => {
   }
 };
 
-export const getMoviesByGenre = async (genreId, page = 1) => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&page=${page}&sort_by=popularity.desc&language=en-US`
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching movies by genre:", error);
-    throw error;
-  }
-};
+// services/Api.js
+export const getMoviesByGenre = (genreId, page = 1, sortBy = "popularity.desc") =>
+  request("/discover/movie", {
+    with_genres: genreId,
+    page,
+    sort_by: sortBy,
+    language: "en-US"
+  });
 
 // Optional: Get movie details if not already in your file
 export const getMovieDetails = (movieId) =>

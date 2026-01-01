@@ -10,6 +10,19 @@ const Genres = () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [sortBy, setSortBy] = useState("popularity.desc");
+
+  // Sort options
+  const sortOptions = [
+    { value: "popularity.desc", label: "Popularity (High to Low)" },
+    { value: "popularity.asc", label: "Popularity (Low to High)" },
+    { value: "vote_average.desc", label: "Rating (High to Low)" },
+    { value: "vote_average.asc", label: "Rating (Low to High)" },
+    { value: "release_date.desc", label: "Release Date (Newest)" },
+    { value: "release_date.asc", label: "Release Date (Oldest)" },
+    { value: "revenue.desc", label: "Revenue (High to Low)" },
+    { value: "original_title.asc", label: "Title (A-Z)" },
+  ];
 
   // Load all genres on component mount
   useEffect(() => {
@@ -37,14 +50,14 @@ const Genres = () => {
   // Load movies when genre changes
   useEffect(() => {
     if (selectedGenre) {
-      loadMovies(selectedGenre.id, 1, true);
+      loadMovies(selectedGenre.id, 1, true, sortBy);
     }
   }, [selectedGenre]);
 
-  const loadMovies = useCallback(async (genreId, pageNum = 1, reset = false) => {
+  const loadMovies = useCallback(async (genreId, pageNum = 1, reset = false, sortParam = sortBy) => {
     try {
       setLoading(true);
-      const data = await getMoviesByGenre(genreId, pageNum);
+      const data = await getMoviesByGenre(genreId, pageNum, sortParam);
       
       if (reset) {
         setMovies(data.results || []);
@@ -59,18 +72,29 @@ const Genres = () => {
     } finally {
       setLoading(false);
     }
-  }, [selectedGenre]);
+  }, [selectedGenre, sortBy]);
 
   const handleGenreClick = (genre) => {
     setSelectedGenre(genre);
     setPage(1);
     setMovies([]);
+    setSortBy("popularity.desc");
+  };
+
+  const handleSortChange = (e) => {
+    const newSortBy = e.target.value;
+    setSortBy(newSortBy);
+    setPage(1);
+    setMovies([]);
+    if (selectedGenre) {
+      loadMovies(selectedGenre.id, 1, true, newSortBy);
+    }
   };
 
   const handleLoadMore = () => {
     const nextPage = page + 1;
     setPage(nextPage);
-    loadMovies(selectedGenre.id, nextPage, false);
+    loadMovies(selectedGenre.id, nextPage, false, sortBy);
   };
 
   const getGenreColor = (genreId) => {
@@ -112,6 +136,20 @@ const Genres = () => {
       'Western': '🤠'
     };
     return icons[genreName] || '🎬';
+  };
+
+  const getSortIcon = (sortValue) => {
+    const icons = {
+      "popularity.desc": "🔥↓",
+      "popularity.asc": "🔥↑",
+      "vote_average.desc": "⭐↓", 
+      "vote_average.asc": "⭐↑",
+      "release_date.desc": "📅↓",
+      "release_date.asc": "📅↑",
+      "revenue.desc": "💰↓",
+      "original_title.asc": "A→Z"
+    };
+    return icons[sortValue] || "↓";
   };
 
   if (error && !selectedGenre) {
@@ -209,17 +247,25 @@ const Genres = () => {
                 <div>
                   <h2 className="text-3xl font-bold">{selectedGenre.name} Movies</h2>
                   <p className="text-gray-400">
-                    {movies.length} {movies.length === 1 ? 'movie' : 'movies'} loaded
+                    {movies.length} {movies.length === 1 ? 'movie' : 'movies'} loaded • 
+                    Sorted by: {sortOptions.find(opt => opt.value === sortBy)?.label.split(' ')[0]}
                   </p>
                 </div>
               </div>
               
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-400">Sorted by:</span>
-                <select className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700">
-                  <option>Popularity</option>
-                  <option>Release Date</option>
-                  <option>Rating</option>
+                <span className="text-sm text-gray-400">Sort by:</span>
+                <select 
+                  value={sortBy}
+                  onChange={handleSortChange}
+                  disabled={loading || movies.length === 0}
+                  className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {sortOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {getSortIcon(option.value)} {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
