@@ -138,23 +138,9 @@ const Genres = () => {
     return icons[genreName] || '🎬';
   };
 
-  const getSortIcon = (sortValue) => {
-    const icons = {
-      "popularity.desc": "🔥↓",
-      "popularity.asc": "🔥↑",
-      "vote_average.desc": "⭐↓", 
-      "vote_average.asc": "⭐↑",
-      "release_date.desc": "📅↓",
-      "release_date.asc": "📅↑",
-      "revenue.desc": "💰↓",
-      "original_title.asc": "A→Z"
-    };
-    return icons[sortValue] || "↓";
-  };
-
   if (error && !selectedGenre) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-12">
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-12 flex items-center justify-center">
         <div className="container mx-auto px-4 text-center">
           <div className="text-red-500 text-5xl mb-4">❌</div>
           <h2 className="text-2xl font-bold text-white mb-4">Oops!</h2>
@@ -173,33 +159,33 @@ const Genres = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Floating decorations */}
-      <div className="fixed top-20 left-4 md:left-10 text-4xl opacity-10 animate-float">🎭</div>
-      <div className="fixed bottom-40 right-4 md:right-10 text-4xl opacity-10 animate-float-delayed">🎪</div>
+      <div className="fixed top-20 left-4 md:left-10 text-4xl opacity-10 animate-float hidden md:block">🎭</div>
+      <div className="fixed bottom-40 right-4 md:right-10 text-4xl opacity-10 animate-float-delayed hidden md:block">🎪</div>
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <span className="text-6xl">🎭</span>
+              <span className="text-5xl sm:text-6xl">🎭</span>
               <div className="absolute -top-2 -right-2 bg-purple-500 text-xs px-2 py-1 rounded-full animate-pulse">
                 GENRES
               </div>
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Browse by <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-600">Genre</span>
           </h1>
           
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
             Discover movies from every genre. From action-packed thrillers to heartwarming dramas.
           </p>
         </div>
 
         {/* Genres Grid */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
             <span className="text-2xl">🏷️</span>
             Select a Genre
           </h2>
@@ -211,21 +197,21 @@ const Genres = () => {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
               {genres.map((genre) => (
                 <button
                   key={genre.id}
                   onClick={() => handleGenreClick(genre)}
-                  className={`relative overflow-hidden rounded-xl p-6 text-center transition-all duration-300 transform hover:scale-[1.02] group ${
+                  className={`relative overflow-hidden rounded-xl p-4 sm:p-6 text-center transition-all duration-300 transform hover:scale-[1.02] group ${
                     selectedGenre?.id === genre.id
                       ? `${getGenreColor(genre.id)} text-white scale-[1.02] shadow-lg`
                       : 'bg-gray-800/50 hover:bg-gray-700/70 text-gray-300 hover:text-white'
                   }`}
                 >
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
+                  <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-110 transition-transform">
                     {getGenreIcon(genre.name)}
                   </div>
-                  <h3 className="font-semibold text-lg">{genre.name}</h3>
+                  <h3 className="font-semibold text-sm sm:text-base md:text-lg truncate">{genre.name}</h3>
                   
                   {selectedGenre?.id === genre.id && (
                     <div className="absolute inset-0 border-2 border-white/20 rounded-xl"></div>
@@ -238,43 +224,42 @@ const Genres = () => {
 
         {/* Selected Genre Section */}
         {selectedGenre && (
-          <div className="mt-12">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div className="mt-8 sm:mt-12">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
               <div className="flex items-center gap-4">
                 <div className={`${getGenreColor(selectedGenre.id)} p-3 rounded-xl`}>
                   <span className="text-2xl">{getGenreIcon(selectedGenre.name)}</span>
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">{selectedGenre.name} Movies</h2>
-                  <p className="text-gray-400">
-                    {movies.length} {movies.length === 1 ? 'movie' : 'movies'} loaded • 
-                    Sorted by: {sortOptions.find(opt => opt.value === sortBy)?.label.split(' ')[0]}
+                  <h2 className="text-2xl sm:text-3xl font-bold">{selectedGenre.name} Movies</h2>
+                  <p className="text-gray-400 text-sm sm:text-base">
+                    {movies.length} {movies.length === 1 ? 'movie' : 'movies'} loaded
                   </p>
                 </div>
               </div>
               
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-400">Sort by:</span>
+                <span className="text-gray-400 text-sm sm:text-base whitespace-nowrap">Sort by:</span>
                 <select 
                   value={sortBy}
                   onChange={handleSortChange}
                   disabled={loading || movies.length === 0}
-                  className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base w-full lg:w-auto"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
-                      {getSortIcon(option.value)} {option.label}
+                      {option.label}
                     </option>
                   ))}
                 </select>
               </div>
             </div>
 
-            {/* Movies Grid */}
+            {/* Movies Grid - NOW 4 PER ROW ON LARGE SCREENS */}
             {loading && movies.length === 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                {[...Array(10)].map((_, i) => (
-                  <div key={i} className="bg-gray-800/50 h-[420px] rounded-xl animate-pulse"></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                {[...Array(8)].map((_, i) => (
+                  <div key={i} className="bg-gray-800/50 h-[380px] sm:h-[420px] rounded-xl animate-pulse"></div>
                 ))}
               </div>
             ) : movies.length === 0 ? (
@@ -287,7 +272,13 @@ const Genres = () => {
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {/* Movies Grid: 
+                  - 1 column on mobile (100%)
+                  - 2 columns on sm (640px)
+                  - 3 columns on md (768px)  
+                  - 4 columns on lg (1024px) - THIS IS THE KEY CHANGE
+                */}
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                   {movies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                   ))}
@@ -295,7 +286,7 @@ const Genres = () => {
 
                 {/* Load More Button */}
                 {hasMore && (
-                  <div className="text-center mt-12">
+                  <div className="text-center mt-8 sm:mt-12">
                     <button
                       onClick={handleLoadMore}
                       disabled={loading}
@@ -311,9 +302,9 @@ const Genres = () => {
         )}
 
         {/* Genre Stats */}
-        <div className="mt-20 pt-12 border-t border-gray-800">
+        <div className="mt-16 sm:mt-20 pt-8 sm:pt-12 border-t border-gray-800">
           <h3 className="text-2xl font-bold mb-8 text-center">Explore All Genres</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
               { label: 'Total Genres', value: genres.length, icon: '🏷️' },
               { label: 'Action Movies', value: genres.find(g => g.name === 'Action')?.id ? '1000+' : 'Popular', icon: '💥' },
@@ -354,6 +345,60 @@ const styles = `
 
 .animate-float-delayed {
   animation: float-delayed 8s ease-in-out infinite;
+}
+
+/* Improve MovieCard grid spacing */
+.grid-cols-1 > * {
+  max-width: 100%;
+}
+
+.grid-cols-2 > * {
+  max-width: 100%;
+}
+
+.grid-cols-3 > * {
+  max-width: 100%;
+}
+
+.grid-cols-4 > * {
+  max-width: 100%;
+}
+
+/* Ensure MovieCards maintain proper aspect ratio */
+.grid-cols-4 .relative {
+  aspect-ratio: 2/3;
+}
+
+/* Better mobile touch targets */
+@media (max-width: 640px) {
+  button, select {
+    min-height: 44px;
+  }
+  
+  .grid-cols-2 {
+    gap: 0.75rem;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid-cols-2, .grid-cols-3 {
+    gap: 1rem;
+  }
+}
+
+/* Desktop optimization for 4 columns */
+@media (min-width: 1024px) {
+  .grid-cols-4 {
+    gap: 1.5rem;
+  }
+}
+
+/* Hide floating elements on small screens */
+@media (max-width: 768px) {
+  .fixed {
+    display: none;
+  }
 }
 `;
 
