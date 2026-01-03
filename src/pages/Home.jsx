@@ -118,7 +118,7 @@ function Home() {
           </div>
           
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 px-2">
-            Welcome to <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-purple-600">MovieHub</span>
+            Welcome to <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-purple-600">Movietos</span>
           </h1>
           
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
@@ -146,7 +146,7 @@ function Home() {
         <div className="max-w-2xl mx-auto mb-12 sm:mb-20 px-2 sm:px-0">
           <div className="text-center mb-6 sm:mb-8">
             <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
-              <FaSearch className="text-red-500 text-lg sm:text-xl" />
+              <FaSearch className="text-purple-500 text-lg sm:text-xl" />
               <h2 className="text-xl sm:text-2xl font-bold">Find Your Next Favorite Movie</h2>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-gray-400 mb-4 sm:mb-6">
@@ -159,13 +159,13 @@ function Home() {
               <input
                 type="text"
                 placeholder="Search movies by title, actor, or genre..."
-                className="flex-1 rounded-lg sm:rounded-xl bg-gray-800/70 px-4 sm:px-6 py-3 sm:py-4 text-white outline-none border border-gray-700 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition text-sm sm:text-base"
+                className="flex-1 rounded-lg sm:rounded-xl bg-gray-800/70 px-4 sm:px-6 py-3 sm:py-4 text-white outline-none border border-gray-700 focus:border-purple-600 focus:ring-2 focus:ring-red-600/20 transition text-sm sm:text-base"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button 
                 type="submit"
-                className="rounded-lg sm:rounded-xl bg-gradient-to-r from-red-600 to-red-700 px-6 sm:px-8 py-3 sm:py-4 font-semibold hover:from-red-700 hover:to-red-800 transition-all hover:scale-105 whitespace-nowrap flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-800 to-blue-400 px-6 sm:px-8 py-3 sm:py-4 font-semibold hover:from-purple-900 hover:to-blue-700 transition-all hover:scale-105 whitespace-nowrap flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <FaSearch className="text-sm" />
                 Search
@@ -186,7 +186,7 @@ function Home() {
         {searchResults.length > 0 && (
           <div className="mb-12 sm:mb-16">
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <FaRocket className="text-red-500 text-lg sm:text-2xl" />
+              <FaRocket className="text-purple-500 text-lg sm:text-2xl" />
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Search Results</h2>
               <span className="bg-gray-800 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm">
                 {searchResults.length} movies
@@ -239,14 +239,14 @@ function Home() {
         <div className="mt-12 sm:mt-24 text-center">
           <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 rounded-lg sm:rounded-2xl p-6 sm:p-8 md:p-12 border border-gray-700 mx-2 sm:mx-0">
             <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-              <FaUsers className="text-2xl sm:text-3xl text-red-500" />
+              <FaUsers className="text-2xl sm:text-3xl text-purple-500" />
               <h3 className="text-xl sm:text-2xl font-bold">Join Our Community</h3>
             </div>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
               Start building your personal movie collection today. Save favorites, get personalized recommendations, and never miss a great film.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-all hover:scale-105 text-sm sm:text-base">
+              <button className="bg-purple-600 hover:bg-purple-900 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-all hover:scale-105 text-sm sm:text-base">
                 Get Started Free
               </button>
               <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-all hover:scale-105 border border-gray-700 text-sm sm:text-base">

@@ -114,13 +114,13 @@ const Footer = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                  className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-lg transition-colors"
+                className="w-full bg-linear-to-b from-blue-600 to-purple-700 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition-colors"
               >
                 Subscribe
               </button>
@@ -134,7 +134,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm">
-            © {currentYear} MovieHub. All rights reserved.
+            © {currentYear} <span className="bg-clip-text text-transparent bg-linear-to-r from-blue-500 to-purple-700">Movietos.</span> All rights reserved.
           </div>
           
           <div className="text-gray-400 text-sm">
@@ -143,7 +143,7 @@ const Footer = () => {
               href="https://www.themoviedb.org/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-white hover:text-red-500 transition-colors font-semibold"
+              className="text-white hover:text-purple-500 transition-colors font-semibold"
             >
               TMDB
             </a>

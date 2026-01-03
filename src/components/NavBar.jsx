@@ -16,13 +16,13 @@ function NavBar() {
               alt="Movietos logo"
             />
           </div>
-          <span className="hidden md:inline-block ml-2 font-semibold text-white">Movietos</span>
+          <span className="hidden md:inline-block ml-2 font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">Movietos</span>
         </Link>
 
         {/* Mobile menu button */}
         <button
           onClick={() => setOpen(!open)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none md:hidden"
           aria-label="Toggle menu"
         >
           <svg
@@ -50,7 +50,7 @@ function NavBar() {
             <li>
               <Link
                 to="/"
-                className="block rounded px-3 py-2 text-gray-300 md:p-0"
+                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
               >
                 Home
               </Link>
@@ -58,7 +58,7 @@ function NavBar() {
             <li>
               <Link
                 to="/favorites"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
+                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
               >
                 Favorites
               </Link>
@@ -66,7 +66,7 @@ function NavBar() {
             <li>
               <Link
                 to="/about"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
+                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
               >
                 About
               </Link>
@@ -74,7 +74,7 @@ function NavBar() {
             <li>
               <Link
                 to="/genres"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white md:p-0 md:hover:bg-transparent"
+                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
               >
                 Genres
               </Link>
