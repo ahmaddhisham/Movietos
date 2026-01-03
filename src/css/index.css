@@ -66,11 +66,38 @@ html, body {
   box-sizing: border-box;
 }
 
+/* Prevent snap scrolling from interfering with page scroll */
+html {
+  overscroll-behavior-y: auto;
+}
+
+/* Allow smooth vertical scrolling on mobile */
+@media (max-width: 768px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
+  }
+}
+
 /* Prevent horizontal scroll */
 body {
   position: relative;
   width: 100vw;
   overflow-x: hidden;
+  /* Allow vertical scrolling on mobile */
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure main content allows vertical scrolling */
+main {
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal scroll containers should only affect horizontal scrolling */
+.overflow-x-auto {
+  touch-action: pan-x pinch-zoom;
 }
 
 /* Ensure navbar is always visible */

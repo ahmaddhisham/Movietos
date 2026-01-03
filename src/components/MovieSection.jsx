@@ -59,11 +59,10 @@ function MovieSection({
       ) : (
         /* Movies Row */
         <div className="group relative">
-          {/* Mobile horizontal scroll with touch friendly */}
+          {/* Mobile horizontal scroll */}
           <div 
-            className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory touch-pan-x"
+            className="flex gap-3 sm:gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide"
             style={{
-              WebkitOverflowScrolling: 'touch',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none'
             }}
@@ -71,7 +70,7 @@ function MovieSection({
             {movies.map((movie) => (
               <div
                 key={movie.id}
-                className={`${getCardWidthClass()} snap-start`}
+                className={getCardWidthClass()}
               >
                 <MovieCard movie={movie} />
               </div>
@@ -122,19 +121,6 @@ const scrollbarStyles = `
   scrollbar-width: none;  /* Firefox */
 }
 
-/* Better touch scrolling on iOS */
-.touch-pan-x {
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Snap scrolling for better mobile UX */
-.snap-x {
-  scroll-snap-type: x mandatory;
-}
-
-.snap-start {
-  scroll-snap-align: start;
-}
 
 /* Mobile optimizations */
 @media (max-width: 640px) {
@@ -216,13 +202,5 @@ if (typeof document !== 'undefined') {
   document.head.appendChild(styleSheet);
 }
 
-// Add window check for SSR
-if (typeof window !== 'undefined') {
-  // Add touch detection for better UX
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouchDevice) {
-    document.documentElement.classList.add('touch-device');
-  }
-}
 
 export default MovieSection;
