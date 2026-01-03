@@ -121,6 +121,13 @@ const scrollbarStyles = `
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Allow both horizontal and vertical scrolling on mobile */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+}
+
 
 /* Mobile optimizations */
 @media (max-width: 640px) {

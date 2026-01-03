@@ -67,7 +67,7 @@ function MovieCard({ movie }) {
   const releaseYear = movie.release_date?.split("-")[0] || "N/A";
 
   return (
-        <Link to={`/movie/${movie.id}`} className="block"> {/* Add this line */}
+        <Link to={`/movie/${movie.id}`} className="block" style={{ touchAction: 'manipulation' }}>
 
     <article 
       className="relative overflow-hidden rounded-xl bg-gray-800 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus-within:scale-[1.02] focus-within:shadow-xl"
@@ -235,6 +235,18 @@ const styles = `
   }
   .animate-fade-in-up {
     animation: fade-in-up 0.3s ease-out;
+  }
+  
+  /* Allow vertical scrolling through movie cards on mobile */
+  a[href*="/movie/"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    a[href*="/movie/"] {
+      touch-action: pan-y;
+    }
   }
 `;
 
