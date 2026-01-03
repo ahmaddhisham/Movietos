@@ -73,3 +73,29 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure navbar is always visible */
+nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  width: 100% !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+

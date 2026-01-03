@@ -5,7 +5,7 @@ function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-20 w-full border-b border-gray-800 bg-gray-900">
+    <nav className="fixed top-0 left-0 right-0 z-[100] w-full border-b border-gray-800 bg-gray-900" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, width: '100%', display: 'block' }}>
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group" aria-label="Go to homepage">
@@ -87,3 +87,40 @@ function NavBar() {
 }
 
 export default NavBar;
+
+// Ensure navbar is always visible on mobile
+if (typeof document !== 'undefined' && !document.getElementById('navbar-fix-style')) {
+  const style = document.createElement('style');
+  style.id = 'navbar-fix-style';
+  style.textContent = `
+    nav {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 100 !important;
+      width: 100% !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      background-color: #111827 !important;
+    }
+    @media (max-width: 768px) {
+      nav {
+        z-index: 100 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      /* Ensure pages don't cover navbar */
+      body > div > div {
+        position: relative;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
