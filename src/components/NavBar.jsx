@@ -1,28 +1,48 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar() {
   const [open, setOpen] = useState(false);
 
+  const navLinkClasses = ({ isActive }) =>
+    `
+      flex items-center justify-center
+      w-full md:w-auto
+      px-4 py-3 md:px-0 md:py-0
+      transition-colors duration-300
+      ${
+        isActive
+          ? "text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500"
+          : "text-gray-300 hover:bg-gray-700 hover:text-purple-600 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
+      }
+    `;
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] w-full border-b border-gray-800 bg-gray-900" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, width: '100%', display: 'block' }}>
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-gray-800 bg-gray-900">
+      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group" aria-label="Go to homepage">
+        <Link
+          to="/"
+          className="flex items-center gap-3 group"
+          aria-label="Go to homepage"
+          onClick={() => setOpen(false)}
+        >
           <div className="rounded-full p-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
             <img
               src="/movietos-logo.png"
-              className="h-9 w-9 rounded-full bg-gray-900 object-cover transition-transform duration-200 transform group-hover:scale-105"
               alt="Movietos logo"
+              className="h-9 w-9 rounded-full bg-gray-900 object-cover transition-transform duration-200 group-hover:scale-105"
             />
           </div>
-          <span className="hidden md:inline-block ml-2 font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">Movietos</span>
+          <span className="hidden md:inline-block font-semibold leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+            Movietos
+          </span>
         </Link>
 
         {/* Mobile menu button */}
         <button
-          onClick={() => setOpen(!open)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none md:hidden"
+          onClick={() => setOpen((prev) => !prev)}
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none"
           aria-label="Toggle menu"
         >
           <svg
@@ -42,43 +62,37 @@ function NavBar() {
 
         {/* Links */}
         <div
-          className={`w-full md:block md:w-auto ${
-            open ? "block" : "hidden"
-          }`}
+          className={`
+            ${open ? "block" : "hidden"}
+            absolute left-0 right-0 top-full
+            md:static md:block
+          `}
         >
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-800 bg-gray-800 p-4 md:mt-0 md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0">
-            <li>
-              <Link
-                to="/"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
-              >
-                Home
-              </Link>
-            </li> 
-            <li>
-              <Link
-                to="/favorites"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
-              >
-                Favorites
-              </Link>
-            </li> 
-            <li>
-              <Link
-                to="/about"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
-              >
-                About
-              </Link>
-            </li> 
-            <li>
-              <Link
-                to="/genres"
-                className="block rounded px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-purple-600 transition-colors duration-300 md:p-0 md:hover:bg-transparent md:hover:text-transparent md:hover:bg-clip-text md:hover:bg-gradient-to-r md:hover:from-pink-500 md:hover:to-violet-500"
-              >
-                Genres
-              </Link>
-            </li> 
+          <ul
+            className="
+              m-0 list-none
+              flex flex-col items-center
+              bg-gray-900 border-t border-gray-800
+              md:flex-row md:gap-8 md:border-0 md:bg-transparent
+            "
+          >
+            {[
+              { to: "/", label: "Home", end: true },
+              { to: "/favorites", label: "Favorites" },
+              { to: "/about", label: "About" },
+              { to: "/genres", label: "Genres" },
+            ].map(({ to, label, end }) => (
+              <li key={label} className="w-full md:w-auto">
+                <NavLink
+                  to={to}
+                  end={end}
+                  onClick={() => setOpen(false)}
+                  className={navLinkClasses}
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -87,40 +101,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-// Ensure navbar is always visible on mobile
-if (typeof document !== 'undefined' && !document.getElementById('navbar-fix-style')) {
-  const style = document.createElement('style');
-  style.id = 'navbar-fix-style';
-  style.textContent = `
-    nav {
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      z-index: 100 !important;
-      width: 100% !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      background-color: #111827 !important;
-    }
-    @media (max-width: 768px) {
-      nav {
-        z-index: 100 !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
-      /* Ensure pages don't cover navbar */
-      body > div > div {
-        position: relative;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-}

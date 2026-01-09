@@ -96,10 +96,10 @@ function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
       {/* Floating decorative elements - Hidden on mobile, visible on md+ */}
-      <div className="hidden md:block fixed top-20 left-10 text-4xl opacity-10 animate-float">🎥</div>
-      <div className="hidden md:block fixed bottom-40 right-10 text-4xl opacity-10 animate-float-delayed">🍿</div>
-      <div className="hidden lg:block fixed top-1/3 right-20 text-4xl opacity-10 animate-float">🎞️</div>
-      <div className="hidden lg:block fixed bottom-1/4 left-20 text-4xl opacity-10 animate-float-delayed">📽️</div>
+      <div className="md:block fixed top-20 left-10 text-4xl opacity-10 animate-float">🎥</div>
+      <div className="md:block fixed bottom-40 right-10 text-4xl opacity-10 animate-float-delayed">🍿</div>
+      <div className="lg:block fixed top-1/3 right-20 text-4xl opacity-10 animate-float">🎞️</div>
+      <div className="lg:block fixed bottom-1/4 left-20 text-4xl opacity-10 animate-float-delayed">📽️</div>
 
       {/* Hero Section */}
       {featured && <Hero movie={featured} />}

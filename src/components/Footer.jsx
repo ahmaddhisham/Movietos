@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span className="text-3xl">🎬</span>
-              <span className="text-2xl font-bold text-white">MovieHub</span>
+              <span className="text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-500 to-purple-700">Movietos</span>
             </div>
             <p className="text-gray-400 text-sm">
               Discover your next favorite movie. Browse thousands of films, track your favorites, and stay updated with the latest releases.
