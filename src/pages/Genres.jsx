@@ -183,44 +183,38 @@ const Genres = () => {
           </p>
         </div>
 
-        {/* Genres Grid */}
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
-            <span className="text-2xl">🏷️</span>
-            Select a Genre
-          </h2>
-          
-          {loading && !selectedGenre ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {[...Array(12)].map((_, i) => (
-                <div key={i} className="bg-gray-800/50 h-24 rounded-xl animate-pulse"></div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-              {genres.map((genre) => (
-                <button
-                  key={genre.id}
-                  onClick={() => handleGenreClick(genre)}
-                  className={`relative overflow-hidden rounded-xl p-4 sm:p-6 text-center transition-all duration-300 transform hover:scale-[1.02] group ${
-                    selectedGenre?.id === genre.id
-                      ? `${getGenreColor(genre.id)} text-white scale-[1.02] shadow-lg`
-                      : 'bg-gray-800/50 hover:bg-gray-700/70 text-gray-300 hover:text-white'
-                  }`}
-                >
-                  <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-110 transition-transform">
-                    {getGenreIcon(genre.name)}
-                  </div>
-                  <h3 className="font-semibold text-sm sm:text-base md:text-lg truncate">{genre.name}</h3>
-                  
-                  {selectedGenre?.id === genre.id && (
-                    <div className="absolute inset-0 border-2 border-white/20 rounded-xl"></div>
-                  )}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+{/* Genre Dropdown */}
+<div className="mb-8 sm:mb-12 max-w-md">
+  <h2 className="text-xl sm:text-2xl font-bold mb-4 flex items-center gap-2">
+    <span className="text-2xl">🏷️</span>
+    Select a Genre
+  </h2>
+
+  <select
+    value={selectedGenre?.id || ""}
+    onChange={(e) => {
+      const genre = genres.find(
+        (g) => g.id === Number(e.target.value)
+      );
+      if (genre) handleGenreClick(genre);
+    }}
+    disabled={loading || genres.length === 0}
+    className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700
+               focus:outline-none focus:ring-2 focus:ring-purple-600
+               disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    <option value="" disabled>
+      -- Choose a genre --
+    </option>
+
+    {genres.map((genre) => (
+      <option key={genre.id} value={genre.id}>
+        {getGenreIcon(genre.name)} {genre.name}
+      </option>
+    ))}
+  </select>
+</div>
+
 
         {/* Selected Genre Section */}
         {selectedGenre && (

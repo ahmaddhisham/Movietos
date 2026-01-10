@@ -8,10 +8,12 @@ import About from "./pages/About"
 import Footer from "./components/Footer"
 import Genres from "./pages/Genres"
 import MovieDetails from "./pages/MovieDetails"
+import ScrollToTop from "./components/scrolltoTop"
 
 function App() {
   return (
     <MovieProvider>
+      <ScrollToTop />
       <NavBar />
       <div className="flex flex-col min-h-screen pt-16 sm:pt-20 md:pt-24 bg-gray-900">
         <main className='flex-grow'>

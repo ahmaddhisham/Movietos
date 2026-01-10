@@ -126,3 +126,21 @@ nav {
   }
 }
 
+@keyframes purple-glow {
+  0%, 100% {
+    box-shadow: 0 10px 20px -5px rgba(128,0,255,0.4),
+                0 20px 40px -10px rgba(148,0,255,0.3),
+                0 30px 60px -15px rgba(168,0,255,0.2);
+  }
+  50% {
+    box-shadow: 0 15px 30px -5px rgba(128,0,255,0.6),
+                0 25px 50px -10px rgba(148,0,255,0.5),
+                0 35px 70px -15px rgba(168,0,255,0.4);
+  }
+}
+
+.shadow-purple-gradient-animated {
+  animation: purple-glow 2s infinite alternate;
+}
+
+
