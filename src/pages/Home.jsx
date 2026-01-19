@@ -109,9 +109,9 @@ function Home() {
         {/* Welcome Section */}
         <div className="text-center mb-8 sm:mb-16">
           <div className="flex justify-center mb-4 sm:mb-6">
-            <div className="relative">
-              <span className="text-4xl sm:text-5xl md:text-6xl">🎬</span>
-              <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 bg-red-500 text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full animate-pulse text-[10px] sm:text-xs">
+            <div className="relative w-fit">
+              <img src="logo32.png" alt="Movietos Logo" className="w-45 sm:w-50  md:w-74 h-auto"/>
+              <div className="absolute top-0 right-0 bg-red-500 text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full animate-pulse text-[10px] sm:text-xs">
                 LIVE
               </div>
             </div>

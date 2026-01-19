@@ -64,7 +64,7 @@ const MovieDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-12">
+      <div className="min-h-screen bg-gradient-to-b from-gray-500 to-black py-12">
         <div className="container mx-auto px-4">
           <div className="animate-pulse">
             <div className="h-12 w-32 bg-gray-800 rounded mb-8"></div>
@@ -109,16 +109,16 @@ const MovieDetails = () => {
   const isMovieFavorite = isFavorite(movie.id);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+    <div className="min-h-screen bg-linear-to-b from-gray-800 to-black text-white">
       {/* Backdrop Image */}
       {movie.backdrop_path && (
-        <div className="relative h-64 md:h-96 overflow-hidden">
+        <div className="relative h-64 md:h-96 lg:h-120 overflow-hidden">
           <img
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             alt={movie.title}
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-gray-900/70 to-transparent"></div>
         </div>
       )}
 
@@ -127,7 +127,7 @@ const MovieDetails = () => {
         <div className="mb-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
+            className="inline-flex items-center gap-2 btn bg-gray-700 px-4 rounded-xl text-gray-300 hover:text-white transition hover:bg-gray-800"
           >
             <FaArrowLeft /> Back to Movies
           </Link>

@@ -68,14 +68,14 @@ function Hero({ movie }) {
   };
 
   return (
-    <section className="relative mb-24 mt-0 h-[85vh] min-h-[600px] overflow-hidden rounded-b-3xl shadow-2xl">
+    <section className="relative mb-24 mt-0 h-[85vh] pt-0 min-h-[600px] overflow-hidden rounded-b-3xl shadow-2xl">
       {/* Background Image with Loading State */}
       <div className="absolute inset-0 mt-0">
         {/* Main Background Image */}
         <img
           src={getImageUrl()}
           alt={movie.title || "Movie backdrop"}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+          className={`absolute inset-0 h-full w-full object-cover pt-0 transition-opacity duration-700 ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
           loading="eager"

@@ -18,7 +18,7 @@ function NavBar() {
     `;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-gray-800 bg-gray-900">
+    <nav className="fixed top-0 left-0 right-0 z-[100] border-b border-gray-800 bg-gray-800">
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
         <Link
@@ -27,11 +27,11 @@ function NavBar() {
           aria-label="Go to homepage"
           onClick={() => setOpen(false)}
         >
-          <div className="rounded-full p-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+          <div className="rounded-full p-[2px] bg-gradient-to-r mb-0 from-blue-500 via-purple-500 to-pink-500">
             <img
               src="/movietos-logo.png"
               alt="Movietos logo"
-              className="h-9 w-9 rounded-full bg-gray-900 object-cover transition-transform duration-200 group-hover:scale-105"
+              className="h-11 w-11 rounded-full bg-gray-900 object-cover pt-1 transition-transform duration-200 group-hover:scale-105"
             />
           </div>
           <span className="hidden md:inline-block font-semibold leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">

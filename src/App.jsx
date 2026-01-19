@@ -15,7 +15,7 @@ function App() {
     <MovieProvider>
       <ScrollToTop />
       <NavBar />
-      <div className="flex flex-col min-h-screen pt-16 sm:pt-20 md:pt-24 bg-gray-900">
+      <div className="flex flex-col min-h-screen pt-16 sm:pt-16 md:pt-16 bg-gray-900">
         <main className='flex-grow'>
           <Routes>
             <Route path='/' element={<Home />} />
