@@ -294,7 +294,7 @@ const MovieDetails = () => {
                       <h4 className="font-bold mb-3">Production Companies</h4>
                       <div className="flex flex-wrap gap-4">
                         {movie.production_companies.map(company => (
-                          <div key={company.id} className="flex items-center gap-2 bg-gray-800/50 p-3 rounded-lg">
+                          <div key={company.id} className="flex items-center gap-2 bg-gray-600 p-3 rounded-lg">
                             {company.logo_path ? (
                               <img
                                 src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
